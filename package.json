@@ -1,0 +1,22 @@
+{
+  "name": "state-machine-minimizer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emavola/state-machine-minimizer.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/emavola/state-machine-minimizer/issues"
+  },
+  "homepage": "https://github.com/emavola/state-machine-minimizer#readme",
+  "devDependencies": {
+    "xo": "^0.18.2"
+  }
+}
