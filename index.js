@@ -1,7 +1,7 @@
-const am = require('./tools/automa-manager.js');
+const automaManager = require('./tools/automa-manager.js');
 const Couple = require('./tools/couple.js');
 
-function min(automa) {
+function minimize(automa) {
 	automa.delUnreachables();
 	let cp = prodCart(automa.states).map(el => {
 		return new Couple(automa, el[0], el[1]);
@@ -53,3 +53,8 @@ function prodCart(arr) {
 	}
 	return lst;
 }
+
+module.exports = {
+	minimize,
+	automaManager
+};

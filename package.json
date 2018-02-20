@@ -10,7 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/emavola/state-machine-minimizer.git"
   },
-  "author": "",
+  "author": {
+    "name": "Emanele Volanti"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/emavola/state-machine-minimizer/issues"
