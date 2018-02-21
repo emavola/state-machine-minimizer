@@ -20,5 +20,8 @@
   "homepage": "https://github.com/emavola/state-machine-minimizer#readme",
   "devDependencies": {
     "xo": "^0.18.2"
+  },
+  "dependencies": {
+    "state-machine-graph": "^1.0.0"
   }
 }
