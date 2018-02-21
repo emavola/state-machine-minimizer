@@ -23,19 +23,6 @@ const parse = json => {
 	return automa;
 };
 
-const stringify = automa => {
-	const obj = {};
-	automa.states.forEach(st => {
-		const inp = {};
-		automa.inputs.forEach(input => {
-			inp[input] = [st.output(input)[1].id, st.output(input)[0]];
-		});
-		obj[st.id] = inp;
-	});
-	return JSON.stringify(obj, '', 4);
-};
-
 module.exports = {
-	parse,
-	stringify
+	parse
 };
