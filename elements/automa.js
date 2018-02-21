@@ -46,6 +46,18 @@ function Automa(startStateId, states, inputs) {
 		});
 		return ret;
 	};
+
+	this.toString = () => {
+		const obj = {};
+		this.states.forEach(st => {
+			const inp = {};
+			this.inputs.forEach(input => {
+				inp[input] = [st.output(input)[1].id, st.output(input)[0]];
+			});
+			obj[st.id] = inp;
+		});
+		return JSON.stringify(obj, '', 4);
+	};
 }
 
 module.exports = Automa;
