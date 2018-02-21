@@ -1,14 +1,11 @@
-/**
- * Definisce una coppia di stati
- */
-function Couple(automa, stato1, stato2) {
-	this.stato1 = stato1;
-	this.stato2 = stato2;
-	this.automa = automa;
+function Couple(stateMachine, state1, state2) {
+	this.state1 = state1;
+	this.state2 = state2;
+	this.stateMachine = stateMachine;
 
 	this.sameOutput = () => {
-		for (let x = 0; x < this.automa.inputs.length; x++) {
-			if (this.stato1.output(this.automa.inputs[x])[0] !== this.stato2.output(this.automa.inputs[x])[0]) {
+		for (let x = 0; x < this.stateMachine.inputs.length; x++) {
+			if (this.state1.output(this.stateMachine.inputs[x])[0] !== this.state2.output(this.stateMachine.inputs[x])[0]) {
 				return false;
 			}
 		}
@@ -16,11 +13,11 @@ function Couple(automa, stato1, stato2) {
 	};
 
 	this.merge = () => {
-		this.stato1.merge(this.stato2);
+		this.state1.merge(this.state2);
 	};
 
 	this.extract = () => {
-		return [this.stato1, this.stato2];
+		return [this.state1, this.state2];
 	};
 
 	this.equalsTo = couple => {
@@ -32,13 +29,13 @@ function Couple(automa, stato1, stato2) {
 	};
 
 	this.equalStates = () => {
-		return this.stato1.equalsTo(this.stato2);
+		return this.state1.equalsTo(this.state2);
 	};
 
 	this.couplesOutStates = () => {
 		const lst = [];
-		automa.inputs.forEach(input => {
-			lst.push(new Couple(automa, this.stato1.output(input)[1], this.stato2.output(input)[1]));
+		stateMachine.inputs.forEach(input => {
+			lst.push(new Couple(stateMachine, this.state1.output(input)[1], this.state2.output(input)[1]));
 		});
 		return lst;
 	};
@@ -53,9 +50,9 @@ function Couple(automa, stato1, stato2) {
 	};
 
 	this.union = set => {
-		if (set.has(this.stato1) || set.has(this.stato2)) {
-			set.add(stato1);
-			set.add(stato2);
+		if (set.has(this.state1) || set.has(this.state2)) {
+			set.add(state1);
+			set.add(state2);
 			return false;
 		}
 		return true;

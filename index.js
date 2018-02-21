@@ -1,10 +1,9 @@
-const automaManager = require('./tools/automa-manager.js');
 const Couple = require('./tools/couple.js');
 
-function minimize(automa) {
-	automa.delUnreachables();
-	let cp = prodCart(automa.states).map(el => {
-		return new Couple(automa, el[0], el[1]);
+function minimize(stateMachine) {
+	stateMachine.delUnreachables();
+	let cp = prodCart(stateMachine.states).map(el => {
+		return new Couple(stateMachine, el[0], el[1]);
 	}).filter(x => x.sameOutput());
 	let del = true;
 	while (del) {
@@ -14,7 +13,7 @@ function minimize(automa) {
 			let isIn = true;
 			const outArr = cp[x].couplesOutStates();
 			for (let y = 0; y < outArr.length; y++) {
-				if (!outArr[y].isInArr(cp) && outArr[y].stato1.id !== outArr[y].stato2.id) {
+				if (!outArr[y].isInArr(cp) && outArr[y].state1.id !== outArr[y].state2.id) {
 					isIn = false;
 					break;
 				}
@@ -39,7 +38,7 @@ function minimize(automa) {
 		lst = Array.from(set).sort().reverse();
 		lst.pop().mergeAll(lst);
 	}
-	automa.delUnreachables();
+	stateMachine.delUnreachables();
 }
 
 function prodCart(arr) {
@@ -54,7 +53,4 @@ function prodCart(arr) {
 	return lst;
 }
 
-module.exports = {
-	minimize,
-	automaManager
-};
+module.exports = minimize;
