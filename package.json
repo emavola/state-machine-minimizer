@@ -22,6 +22,6 @@
     "xo": "^0.18.2"
   },
   "dependencies": {
-    "state-machine-graph": "^1.0.0"
+    "state-machine-graph": "^1.1.0"
   }
 }
