@@ -59,13 +59,13 @@ const toType = (stateMachine, returnType) => {
 const fromObj = (obj, returnType) => {
 	returnType = returnType || 'str';
 	const stateMachine = smg.stateMachineBuilder.byObj(obj);
-	toType(stateMachine, returnType);
+	return toType(stateMachine, returnType);
 };
 
 const fromPath = (path, returnType) => {
 	returnType = returnType || 'str';
 	const stateMachine = smg.stateMachineBuilder.byPath(path);
-	toType(stateMachine, returnType);
+	return toType(stateMachine, returnType);
 };
 
 function prodCart(arr) {
