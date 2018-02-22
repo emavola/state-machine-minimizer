@@ -42,9 +42,7 @@ const fromSMG = stateMachine => {
 	stateMachine.delUnreachables();
 };
 
-const fromObj = (obj, returnType) => {
-	returnType = returnType || 'str';
-	const stateMachine = smg.stateMachineBuilder.byObj(obj);
+const toType = (stateMachine, returnType) => {
 	fromSMG(stateMachine);
 	switch (returnType) {
 		case 'str':
@@ -56,6 +54,18 @@ const fromObj = (obj, returnType) => {
 		default:
 			throw new Error('ReturnType not allowed');
 	}
+};
+
+const fromObj = (obj, returnType) => {
+	returnType = returnType || 'str';
+	const stateMachine = smg.stateMachineBuilder.byObj(obj);
+	toType(stateMachine, returnType);
+};
+
+const fromPath = (path, returnType) => {
+	returnType = returnType || 'str';
+	const stateMachine = smg.stateMachineBuilder.byPath(path);
+	toType(stateMachine, returnType);
 };
 
 function prodCart(arr) {
@@ -72,5 +82,6 @@ function prodCart(arr) {
 
 module.exports = {
 	fromSMG,
-	fromObj
+	fromObj,
+	fromPath
 };
