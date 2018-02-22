@@ -1,6 +1,7 @@
+const smg = require('state-machine-graph');
 const Couple = require('./tools/couple.js');
 
-function minimize(stateMachine) {
+const fromSMG = stateMachine => {
 	stateMachine.delUnreachables();
 	let cp = prodCart(stateMachine.states).map(el => {
 		return new Couple(stateMachine, el[0], el[1]);
@@ -39,7 +40,23 @@ function minimize(stateMachine) {
 		lst.pop().mergeAll(lst);
 	}
 	stateMachine.delUnreachables();
-}
+};
+
+const fromObj = (obj, returnType) => {
+	returnType = returnType || 'str';
+	const stateMachine = smg.stateMachineBuilder.byObj(obj);
+	fromSMG(stateMachine);
+	switch (returnType) {
+		case 'str':
+			return stateMachine.toString();
+		case 'obj':
+			return stateMachine.toObj();
+		case 'smg':
+			return stateMachine;
+		default:
+			throw new Error('ReturnType not allowed');
+	}
+};
 
 function prodCart(arr) {
 	const lst = [];
@@ -53,4 +70,7 @@ function prodCart(arr) {
 	return lst;
 }
 
-module.exports = minimize;
+module.exports = {
+	fromSMG,
+	fromObj
+};
