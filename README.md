@@ -31,6 +31,19 @@ const objMinimized = smMinimizer.fromObj(obj);
 
 ```
 
+The state machine object is definited like this:
+
+```js
+{
+  state1: {
+  	input1: [targetState, output],
+	...
+	inputN: [targetState, output]
+  },
+  etc...
+};
+```
+
 ## API
 
 ### .fromObj(obj, returnType)
@@ -56,7 +69,7 @@ The possible options are:
 
 Type: `string`
 
-The json path
+The json path.
 
 ### .fromSMG(smg)
 
@@ -64,4 +77,4 @@ The json path
 
 Type: `smg class`
 
-Minimize the smg object
+Minimize the smg object.
