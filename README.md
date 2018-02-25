@@ -14,15 +14,15 @@ const smMinimizer = require('state-machine-minimizer');
 
 const obj = {
 	q0: {
-		a: ['q5', 1],
-		b: ['q1', 1]
+		a: ['q2', 1],
+		b: ['q0', 1]
 	},
 	q1: {
 		a: ['q0', 0],
-		b: ['q3', 1]
+		b: ['q2', 1]
 	},
 	q2: {
-		a: ['q5', 0],
+		a: ['q0', 0],
 		b: ['q1', 1]
 	}
 };
